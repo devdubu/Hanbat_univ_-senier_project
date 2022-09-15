@@ -17,6 +17,7 @@ function App() {
         >
           Learn React
         </a>
+        <p className="text-amber-200">Tailwind CSS</p>
       </header>
     </div>
   );
