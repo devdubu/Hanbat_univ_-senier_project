@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 export default function Classroom() {
     return(
         <div className={styles.classroom}>
-            <Link to="/classroom/detail">
+            <Link to="/classroom/home">
                 <div className="w-80">
                     <div className="w-60 m-auto">
                         <img className="w-60" src={process.env.PUBLIC_URL+'/Logo.png'}/>
