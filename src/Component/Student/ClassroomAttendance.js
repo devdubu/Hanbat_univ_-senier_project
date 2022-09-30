@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-export default function ClassroomHome() {
+export default function ClassroomAttendance() {
     /*
         메인 수업 홈페이지에 학생들은
         수업 차수 vs 요약 정리 두가지로 보여줄 수 있지만 우선은 요약 정리로
@@ -55,55 +55,6 @@ export default function ClassroomHome() {
                             <div>
                                 <button>출석</button>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {/*
-            **************************************************
-            ********************* 과제 ************************
-            **************************************************
-            */}
-            <div>
-                <div>
-                    <h1>과제</h1>
-                </div>
-                <div>
-                    <div>
-                        <div>
-                            <h2>진행중</h2>
-                        </div>
-                    </div>
-                    <div>
-                        <div>
-                            <h2>진행 예정</h2>
-                        </div>
-                    </div>
-                    <div>
-                        <div>
-                            <h2>진행중</h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {/*
-            **************************************************
-            ********************* 시험 ************************
-            **************************************************
-            */}
-            <div>
-                <div>
-                    <h1>시험</h1>
-                </div>
-                <div>
-                    <div>
-                        <div>
-                            <h2>진행 예정</h2>
-                        </div>
-                    </div>
-                    <div>
-                        <div>
-                            <h2>결과</h2>
                         </div>
                     </div>
                 </div>
