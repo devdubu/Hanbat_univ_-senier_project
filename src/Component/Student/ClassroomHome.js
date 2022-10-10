@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { solid, regular, icon } from '@fortawesome/fontawesome-svg-core/import.macro' // <-- import styles to be used
 import profile from "../../public/profile.jpeg"
@@ -30,6 +30,10 @@ export default function ClassroomHome() {
 
      */
 
+    const [anttendModal, setAnttendModal] = useState(false);
+    function openAttendanceModal(){
+        setAnttendModal(!anttendModal)
+    }
     return(
         <>
             {/*출석 팝업 창*/}
@@ -53,7 +57,7 @@ export default function ClassroomHome() {
                 </div>
                 <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
                     <div className="text-sm lg:flex-grow">
-                        <a href=""
+                        <a onClick={openAttendanceModal}
                            className="block mt-4 lg:inline-block lg:mt-0 text-blue-200 hover:text-white mr-4">
                             출석
                         </a>
@@ -72,6 +76,7 @@ export default function ClassroomHome() {
                 </div>
             </nav>
 
+
             <div className={styles.classroom}>
                 {/*
                 **************************************************
@@ -80,7 +85,7 @@ export default function ClassroomHome() {
                 */}
                 <div className="grid grid-cols-3 relative z-20">
                     <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30">
-                        <ClassroomAttendance/>
+                        {anttendModal && <ClassroomAttendance/>}
                     </div>
                     <div className="w-80 h-96">
                         <div>
@@ -139,7 +144,6 @@ export default function ClassroomHome() {
                     ********************* 과제 ************************
                     **************************************************
                     */}
-                    <div className="grid grid-cols-3">
                         <div className="w-80 h-96">
                             <div>
                                 <div className="mt-10 bg-gray-300 rounded-t pt-2 pb-2">
@@ -215,14 +219,12 @@ export default function ClassroomHome() {
                                 </div>
                             </div>
                         </div>
-                    </div>
 
                     {/*
                     **************************************************
                     ********************* 시험 ************************
                     **************************************************
                     */}
-                    <div className="grid grid-cols-3">
                         <div className="w-80 h-96">
                             <div>
                                 <div className="mt-10 bg-gray-300 rounded-t pt-2 pb-2">
@@ -283,8 +285,8 @@ export default function ClassroomHome() {
                             </div>
                         </div>
                     </div>
-                </div>
             </div>
         </>
     )
+
 }

@@ -4,7 +4,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCalendarCheck, faCalendarWeek, faChalkboard, faChalkboardTeacher} from "@fortawesome/free-solid-svg-icons";
 import {faAngleRight} from "@fortawesome/free-solid-svg-icons";
 import {faAngleLeft} from "@fortawesome/free-solid-svg-icons";
-import styles from './Classroom.module.css'
+import styles from './modal.module.css'
 
 
 
@@ -28,7 +28,7 @@ export default function ClassroomAttendance() {
      */
 
     return(
-        <div className={styles.classroom}>
+        <div className={styles.modal}>
             {/*
             **************************************************
             ********************* 출석 ************************
@@ -62,7 +62,7 @@ export default function ClassroomAttendance() {
                             </div>
                             <div className="w-36 h-56 mr-3 mt-1">
                                 <div className="pt-3  pr-3 h-16 m-auto w-50 bg-stone-100 rounded-r">
-                                    <div className="mb-1 text-base font-medium dark:text-black">3주차</div>
+                                    <div className="mb-1 text-base font-medium dark:text-black">1주차</div>
                                     <div className="w-full bg-gray-200 rounded-full h-1.5 mb-4 dark:bg-gray-700">
                                         <div className="bg-blue-600 h-1.5 rounded-full dark:bg-blue-200" style={{width: '45%'}}></div>
                                     </div>
@@ -82,6 +82,8 @@ export default function ClassroomAttendance() {
                         </div>
                     </div>
                 </div>
+
+
             </div>
         </div>
     )

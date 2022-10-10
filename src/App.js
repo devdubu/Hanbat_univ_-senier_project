@@ -6,7 +6,7 @@ import Login from "./Component/Login/Login";
 import Register from "./Component/Login/Register";
 import Classroom from "./Component/Student/Classroom";
 import ClassroomHome from "./Component/Student/ClassroomHome";
-import ClassroomAttendance from "./Component/Student/ClassroomAttendance"
+import ClassroomTask from "./Component/Student/ClassroomTask";
 import React from 'react';
 
 function App() {
@@ -19,7 +19,7 @@ function App() {
             <Route path="/students*" element={<Students />}></Route>
             <Route path="/classroom" element={<Classroom/>}></Route>
               <Route path="/classroom/home" element={<ClassroomHome/>}/>
-
+                <Route path="/classroom/home/task" element={<ClassroomTask/>}/>
 
 
             {/* 상단에 위치하는 라우트들의 규칙을 모두 확인, 일치하는 라우트가 없는경우 처리 */}
