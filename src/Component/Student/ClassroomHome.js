@@ -7,12 +7,12 @@ import {faCalendarCheck} from  "@fortawesome/free-solid-svg-icons"
 import {faChalkboard} from "@fortawesome/free-solid-svg-icons";
 import {faChalkboardTeacher} from "@fortawesome/free-solid-svg-icons";
 import styles from './Classroom.module.css'
-import ClassroomAttendance from "./ClassroomAttendance";
+import DetailExam from './detailExam';
 import NavBar from "./NavBar";
 
 
 
-export default function ClassroomHome() {
+export default function ClassroomHome(props){
     /*
         메인 수업 홈페이지에 학생들은
         수업 차수 vs 요약 정리 두가지로 보여줄 수 있지만 우선은 요약 정리로
@@ -31,6 +31,19 @@ export default function ClassroomHome() {
 
      */
 
+    const [examModal, setExamModal] = useState(false);
+    const [examModalZ, setExamModalZ] = useState("");
+    const [examModalBlur, setExamModalBlur] = useState("");
+
+    function openExamModal(){
+        if(examModal){
+            setExamModalZ("")
+        }else{
+            setExamModalZ(" z-40")
+        }
+        setExamModal(!examModal)
+
+    }
 
     return(
         <>
@@ -44,7 +57,11 @@ export default function ClassroomHome() {
                 ********************* 출석 ************************
                 **************************************************
                 */}
-                <div className="grid grid-cols-3 relative z-20">
+
+                <div className={"grid "+" grid-cols-3 "+" relative "+' z-20 '+' relative '}>
+                    <div className={"absolute " + " m-auto "+ " w-full " + " h-full "+ " mt-4 "+ examModalZ}>
+                        {examModal&&<DetailExam CloseModal={setExamModal} setZindex={setExamModalZ}/>}
+                    </div>
                     <div className="w-80 h-96">
                         <div>
                             <div className="mt-10 bg-gray-300 rounded-t pt-2 pb-2 grid grid-cols-3">
@@ -216,7 +233,7 @@ export default function ClassroomHome() {
                                                     <p className="pt-1 text-xs bg-red-100 text-red-800 font-semibold mr-2 px-2.5 py-1 rounded dark:bg-red-200 dark:text-red-900">미응시</p>
                                                 </div>
                                                 <div>
-                                                    <button className="mt-2 py-1 text-xs w-full bg-blue-500 hover:bg-blue-700 text-white font-bold rounded">세부사항</button>
+                                                    <button onClick={openExamModal} className="mt-2 py-1 text-xs w-full bg-blue-500 hover:bg-blue-700 text-white font-bold rounded">세부사항</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -234,7 +251,7 @@ export default function ClassroomHome() {
                                                     <p className="pt-1 text-xs bg-green-100 text-green-800 font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-green-200 dark:text-green-900">응시</p>
                                                 </div>
                                                 <div>
-                                                    <button className="mt-2 py-1 text-xs w-full bg-blue-500 hover:bg-blue-700 text-white font-bold rounded">세부사항</button>
+                                                    <button  onClick={openExamModal} className="mt-2 py-1 text-xs w-full bg-blue-500 hover:bg-blue-700 text-white font-bold rounded">세부사항</button>
                                                 </div>
                                             </div>
                                         </div>
