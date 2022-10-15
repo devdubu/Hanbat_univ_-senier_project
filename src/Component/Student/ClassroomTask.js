@@ -1,13 +1,12 @@
 import React, {useState} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { solid, regular, icon } from '@fortawesome/fontawesome-svg-core/import.macro' // <-- import styles to be used
 import profile from "../../public/profile.jpeg"
-import {faAngleLeft, faAngleRight, faCalendarWeek} from "@fortawesome/free-solid-svg-icons"
-import {faCalendarCheck} from  "@fortawesome/free-solid-svg-icons"
-import {faChalkboard} from "@fortawesome/free-solid-svg-icons";
-import {faChalkboardTeacher} from "@fortawesome/free-solid-svg-icons";
+import {faPenToSquare} from "@fortawesome/free-regular-svg-icons/faPenToSquare";
+import {faSquareCheck} from "@fortawesome/free-regular-svg-icons";
+import {faSquare} from "@fortawesome/free-regular-svg-icons";
 import styles from './Classroom.module.css'
 import ClassroomAttendance from "./ClassroomAttendance";
+import NavBar from './NavBar'
 
 
 
@@ -30,51 +29,12 @@ export default function ClassroomHome() {
 
      */
     const [anttendModal, setAnttendModal] = useState(false);
-    function openAttendanceModal(){
-        setAnttendModal(!anttendModal)
-    }
+
 
     return(
         <>
             {/* 상단 메뉴 바*/}
-            <nav className="flex items-center justify-between flex-wrap bg-blue-300 p-6">
-                <div className="flex items-center flex-shrink-0 text-white mr-6">
-                    <svg className="fill-current h-8 w-8 mr-2" width="54" height="54" viewBox="0 0 54 54"
-                         xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z"/>
-                    </svg>
-                    <span className="font-semibold text-xl tracking-tight">수업명</span>
-                </div>
-                <div className="block lg:hidden">
-                    <button
-                        className="flex items-center px-3 py-2 border rounded text-blue-200 border-blue-400 hover:text-white hover:border-white">
-                        <svg className="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <title>Menu</title>
-                            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/>
-                        </svg>
-                    </button>
-                </div>
-                <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
-                    <div className="text-sm lg:flex-grow">
-                        <a onClick={openAttendanceModal}
-                           className="block mt-4 lg:inline-block lg:mt-0 text-blue-200 hover:text-white mr-4">
-                            출석
-                        </a>
-                        <a href="#responsive-header"
-                           className="block mt-4 lg:inline-block lg:mt-0 text-blue-200 hover:text-white mr-4">
-                            과제
-                        </a>
-                        <a href="#responsive-header"
-                           className="block mt-4 lg:inline-block lg:mt-0 text-blue-200 hover:text-white">
-                            시험
-                        </a>
-                    </div>
-                    <div>
-                        <img className="w-10 h-10 rounded" src={profile}/>
-                    </div>
-                </div>
-            </nav>
+            <NavBar/>
 
             <div className={styles.classroom}>
                 {/*
@@ -83,50 +43,77 @@ export default function ClassroomHome() {
                 **************************************************
                 */}
                 <div className="grid grid-cols-2 relative z-20">
-                    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30">
-                        {anttendModal && <ClassroomAttendance/>}
-                    </div>
+
                     <div className="w-80 h-96 m-auto">
                         <div>
                             <div className="mt-10 bg-gray-300 rounded-t pt-2 pb-2">
-                                <div>
-                                    <p className="text-xl text-gray-50">진행 예정</p>
-                                </div>
+                                <p className="text-xl text-gray-50">진행 예정</p>
                             </div>
-                            <div className="rounded-b border-2 w-80 h-720 pt-3 pt-3 grid grid-cols-2 drop-shadow-lg">
+                            <div className="rounded-b border-2 w-80 h-720 pt-3 grid grid-cols-3 drop-shadow-lg">
                                 <div className="h-56 w-24 ml-6 mt-1 mb-3">
-                                    <div className="pt-3 h-16 w-36 text-stone-700 bg-stone-100 rounded-l">
-                                        <FontAwesomeIcon className="text-3xl " icon={faCalendarWeek} />
-                                        <p className="text-xs">주차</p>
+                                    <div className="pt-3 h-16 w-14 text-stone-700 bg-stone-100 rounded">
+                                        <FontAwesomeIcon className="text-3xl " icon={faSquare} />
+                                        <p className="text-xs">3주차</p>
                                     </div>
-                                    <div className="pt-3 mt-3 h-16 text-stone-700 w-36 bg-stone-100 rounded-l">
-                                        <FontAwesomeIcon className="text-3xl" icon={faChalkboard}/>
-                                        <p className="text-xs">수업 방식</p>
+                                    <div className="pt-3 mt-3 h-16 text-stone-700 w-14 bg-stone-100 rounded">
+                                        <FontAwesomeIcon className="text-3xl" icon={faSquare}/>
+                                        <p className="text-xs">3주차</p>
                                     </div>
                                     <div>
-                                        <div className="pt-3 mt-3 h-16 text-stone-700 w-36 bg-stone-100 rounded-l">
-                                            <FontAwesomeIcon className="text-3xl" icon={faCalendarCheck}/>
-                                            <p className="text-xs">출석 여부</p>
+                                        <div className="pt-3 mt-3 h-16 text-stone-700 w-14 bg-stone-100 rounded">
+                                            <FontAwesomeIcon className="text-3xl" icon={faSquare}/>
+                                            <p className="text-xs">3주차</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="w-36 h-56 mr-3 mt-1">
-                                    <div className="pt-3  pr-3 h-16 m-auto w-50 bg-stone-100 rounded-r">
-                                        <div className="mb-1 text-base font-medium dark:text-black">3주차</div>
-                                        <div className="w-full bg-gray-200 rounded-full h-1.5 mb-4 dark:bg-gray-700">
-                                            <div className="bg-blue-600 h-1.5 rounded-full dark:bg-blue-200" style={{width: '45%'}}></div>
+                                    <div className="pr-3 h-16 m-auto w-48 bg-stone-100 rounded grid grid-cols-3">
+                                        <div className="w-12 h-full pt-5 mb-1 border-r-2 bg-red-100 text-red-800 font-semibold rounded-l">미제출</div>
+                                        <div className="w-32">
+                                            <div className="h-5">
+                                                <p>2022.08.02 ~</p>
+                                            </div>
+                                            <div className="grid grid-cols-2">
+                                                <div className="mt-2">
+                                                    <button className="mt-1 w-14 py-1 text-xs w-full bg-gray-500 hover:bg-gray-700 text-white font-bold rounded">자세히</button>
+                                                </div>
+                                                <div>
+                                                    <button className="mt-3 text-xs w-full py-1 bg-blue-500 text-white font-bold rounded opacity-50 cursor-not-allowed">과제제출</button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div className="mt-3 h-16 w-36 m-auto bg-stone-100 rounded-r">
-                                        <div className="h-16 pt-3 bg-blue-100 text-blue-800 rounded dark:bg-blue-200 dark:text-blue-800">
-                                            <FontAwesomeIcon className="text-3xl" icon={faChalkboardTeacher}/>
-                                            <p className="text-xs">대면</p>
+                                    <div className="pr-3 h-16 m-auto w-48 bg-stone-100 rounded grid grid-cols-3 mt-3">
+                                        <div className="w-12 h-full pt-5 mb-1 border-r-2 bg-red-100 text-red-800 font-semibold rounded-l">미제출</div>
+                                        <div className="w-32">
+                                            <div className="h-5">
+                                                <p>2022.08.02 ~</p>
+                                            </div>
+                                            <div className="grid grid-cols-2">
+                                                <div className="mt-2">
+                                                    <button className="mt-1 w-14 py-1 text-xs w-full bg-gray-500 hover:bg-gray-700 text-white font-bold rounded">자세히</button>
+                                                </div>
+                                                <div>
+                                                    <button className="mt-3 text-xs w-full py-1 bg-blue-500 text-white font-bold rounded opacity-50 cursor-not-allowed">과제제출</button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div className="mt-3 h-16 w-36 m-auto bg-stone-100 rounded-r">
-                                        <button type="button" className="mt-4 ml-3 text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-1.5 text-center mr-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800">
-                                            출석
-                                        </button>
+                                    <div className="pr-3 h-16 m-auto w-48 bg-stone-100 rounded grid grid-cols-3 mt-3">
+                                        <div className="w-12 h-full pt-5 mb-1 border-r-2 bg-red-100 text-red-800 font-semibold rounded-l">미제출</div>
+                                        <div className="w-32">
+                                            <div className="h-5">
+                                                <p>2022.08.02 ~</p>
+                                            </div>
+                                            <div className="grid grid-cols-2">
+                                                <div className="mt-2">
+                                                    <button className="mt-1 w-14 py-1 text-xs w-full bg-gray-500 hover:bg-gray-700 text-white font-bold rounded">자세히</button>
+                                                </div>
+                                                <div>
+                                                    <button className="mt-3 text-xs w-full py-1 bg-blue-500 text-white font-bold rounded opacity-50 cursor-not-allowed">과제제출</button>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -139,71 +126,71 @@ export default function ClassroomHome() {
                     */}
                         <div className="w-80 h-96 m-auto">
                             <div>
-                                <div className="mt-10 bg-gray-300 rounded-t pt-2 pb-2">
-                                    <p className="text-xl text-gray-50">과제</p>
+                                <div className="mt-10 bg-blue-300 rounded-t pt-2 pb-2">
+                                    <p className="text-xl text-gray-50">진행중</p>
                                 </div>
                                 <div className="rounded-b border-2 w-80 h-720 pt-3 grid grid-cols-3 drop-shadow-lg">
                                     <div className="h-56 w-24 ml-6 mt-1 mb-3">
                                         <div className="pt-3 h-16 w-14 text-stone-700 bg-stone-100 rounded">
-                                            <FontAwesomeIcon className="text-3xl " icon={faCalendarWeek} />
-                                            <p className="text-xs">진행 예정</p>
+                                            <FontAwesomeIcon className="text-3xl " icon={faPenToSquare} />
+                                            <p className="text-xs">3주차</p>
                                         </div>
                                         <div className="pt-3 mt-3 h-16 text-stone-700 w-14 bg-stone-100 rounded">
-                                            <FontAwesomeIcon className="text-3xl" icon={faChalkboard}/>
-                                            <p className="text-xs">진행 중</p>
+                                            <FontAwesomeIcon className="text-3xl" icon={faPenToSquare}/>
+                                            <p className="text-xs">3주차</p>
                                         </div>
                                         <div>
                                             <div className="pt-3 mt-3 h-16 text-stone-700 w-14 bg-stone-100 rounded">
-                                                <FontAwesomeIcon className="text-3xl" icon={faCalendarCheck}/>
-                                                <p className="text-xs">완료</p>
+                                                <FontAwesomeIcon className="text-3xl" icon={faPenToSquare}/>
+                                                <p className="text-xs">3주차</p>
                                             </div>
                                         </div>
                                     </div>
                                     <div className="w-36 h-56 mr-3 mt-1">
-                                        <div className="pt-1 pr-3 h-16 m-auto w-48 bg-stone-100 rounded grid grid-cols-3">
-                                            <div className="w-12 pt-4 mb-1 border-r-2">3주차</div>
+                                        <div className="pr-3 h-16 m-auto w-48 bg-stone-100 rounded grid grid-cols-3">
+                                            <div className="w-12 h-full pt-5 mb-1 border-r-2 bg-red-100 text-red-800 font-semibold rounded-l">미제출</div>
                                             <div className="w-32">
                                                 <div className="h-5">
                                                     <p>2022.08.02 ~</p>
                                                 </div>
                                                 <div className="grid grid-cols-2">
                                                     <div className="mt-2">
-                                                        <p className="pt-1 text-xs bg-red-100 text-red-800 font-semibold mr-2 px-2.5 py-1 rounded dark:bg-red-200 dark:text-red-900">미제출</p>
+                                                        <button className="mt-1 w-14 py-1 text-xs w-full bg-gray-500 hover:bg-gray-700 text-white font-bold rounded">자세히</button>
                                                     </div>
                                                     <div>
-                                                        <button className="mt-2 text-xs w-full py-1 bg-blue-500 text-white font-bold rounded opacity-50 cursor-not-allowed">과제제출</button>
+                                                        <button className="mt-3 text-xs w-full py-1 text-white font-bold rounded bg-blue-500 hover:bg-blue-700">과제제출</button>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="pt-1 mt-3 pr-3 h-16 m-auto w-48 bg-stone-100 rounded grid grid-cols-3">
-                                            <div className="w-12 pt-4 mb-1 border-r-2">3주차</div>
+                                        <div className="pr-3 h-16 m-auto w-48 bg-stone-100 rounded grid grid-cols-3 mt-3">
+                                            <div className="w-12 h-full pt-5 mb-1 border-r-2 bg-red-100 text-red-800 font-semibold rounded-l">미제출</div>
                                             <div className="w-32">
                                                 <div className="h-5">
-                                                    <p>~ 2022.08.02</p>
+                                                    <p>2022.08.02 ~</p>
                                                 </div>
                                                 <div className="grid grid-cols-2">
                                                     <div className="mt-2">
-                                                        <p className="pt-1 text-xs bg-red-100 text-red-800 font-semibold mr-2 px-2.5 py-1 rounded dark:bg-red-200 dark:text-red-900">미제출</p>
+                                                        <button className="mt-1 w-14 py-1 text-xs w-full bg-gray-500 hover:bg-gray-700 text-white font-bold rounded">자세히</button>
                                                     </div>
                                                     <div>
-                                                        <button className="mt-2 py-1 text-xs w-full bg-blue-500 hover:bg-blue-700 text-white font-bold rounded">과제제출</button>
+                                                        <button className="mt-3 text-xs w-full py-1 text-white font-bold rounded bg-blue-500 hover:bg-blue-700">과제제출</button>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="pt-1 mt-3 pr-3 h-16 m-auto w-48 bg-stone-100 rounded grid grid-cols-3">
-                                            <div className="w-12 pt-4 mb-1 border-r-2">3주차</div>
+                                        <div className="pr-3 h-16 m-auto w-48 bg-stone-100 rounded grid grid-cols-3 mt-3">
+                                            <div className="w-12 h-full pt-5 mb-1 border-r-2 bg-red-100 text-red-800 font-semibold rounded-l">미제출</div>
                                             <div className="w-32">
                                                 <div className="h-5">
-                                                    <p>~ 2022.08.02</p>
+                                                    <p>2022.08.02 ~</p>
                                                 </div>
                                                 <div className="grid grid-cols-2">
                                                     <div className="mt-2">
-                                                        <p className="pt-1 text-xs bg-green-100 text-green-800 font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-green-200 dark:text-green-900">완료</p>
+                                                        <button className="mt-1 w-14 py-1 text-xs w-full bg-gray-500 hover:bg-gray-700 text-white font-bold rounded">자세히</button>
                                                     </div>
                                                     <div>
-                                                        <button className="mt-2 text-xs w-full py-1 bg-blue-500 text-white font-bold rounded opacity-50 cursor-not-allowed">과제제출</button>
+                                                        <button className="mt-3 text-xs w-full py-1 text-white font-bold rounded bg-blue-500 hover:bg-blue-700">과제제출</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -218,58 +205,73 @@ export default function ClassroomHome() {
                     ********************* 마감 ************************
                     **************************************************
                     */}
-                        <div className="w-80 h-96 m-auto">
-                            <div>
-                                <div className="mt-10 bg-gray-300 rounded-t pt-2 pb-2">
-                                    <p className="text-xl text-gray-50">과제</p>
-                                </div>
-                                <div className="rounded-b border-2 w-80 h-720 pt-3 grid grid-cols-3 drop-shadow-lg">
-                                    <div className="h-56 w-24 ml-6 mt-1 mb-3">
-                                        <div className="pt-6 h-24 w-14 text-stone-700 bg-stone-100 rounded">
-                                            <FontAwesomeIcon className="text-3xl " icon={faCalendarWeek} />
-                                            <p className="text-xs">진행 예정</p>
+                    <div className="w-80 h-96 m-auto">
+                        <div>
+                            <div className="mt-10 bg-red-300 rounded-t pt-2 pb-2">
+                                <p className="text-xl text-gray-50">마감</p>
+                            </div>
+                            <div className="rounded-b border-2 w-80 h-720 pt-3 grid grid-cols-3 drop-shadow-lg">
+                                <div className="h-56 w-24 ml-6 mt-1 mb-3">
+                                    <div className="pt-3 h-16 w-14 text-stone-700 bg-stone-100 rounded">
+                                        <FontAwesomeIcon className="text-3xl " icon={faSquareCheck} />
+                                        <p className="text-xs">3주차</p>
+                                    </div>
+                                    <div className="pt-3 mt-3 h-16 text-stone-700 w-14 bg-stone-100 rounded">
+                                        <FontAwesomeIcon className="text-3xl" icon={faSquareCheck}/>
+                                        <p className="text-xs">3주차</p>
+                                    </div>
+                                    <div>
+                                        <div className="pt-3 mt-3 h-16 text-stone-700 w-14 bg-stone-100 rounded">
+                                            <FontAwesomeIcon className="text-3xl" icon={faSquareCheck}/>
+                                            <p className="text-xs">3주차</p>
                                         </div>
-                                        <div>
-                                            <div className="pt-6 mt-3 h-24 text-stone-700 w-14 bg-stone-100 rounded">
-                                                <FontAwesomeIcon className="text-3xl" icon={faCalendarCheck}/>
-                                                <p className="text-xs">완료</p>
+                                    </div>
+                                </div>
+                                <div className="w-36 h-56 mr-3 mt-1">
+                                    <div className="pr-3 h-16 m-auto w-48 bg-stone-100 rounded grid grid-cols-3">
+                                        <div className="w-12 h-full pt-5 mb-1 border-r-2 bg-green-100 text-green-800 font-semibold rounded-l">완료</div>
+                                        <div className="w-32">
+                                            <div className="h-5">
+                                                <p>2022.08.02 ~</p>
+                                            </div>
+                                            <div className="grid grid-cols-2">
+                                                <div className="mt-2">
+                                                    <button className="mt-1 w-14 py-1 text-xs w-full bg-gray-500 hover:bg-gray-700 text-white font-bold rounded">자세히</button>
+                                                </div>
+                                                <div>
+                                                    <button className="mt-3 text-xs w-full py-1 bg-blue-500 text-white font-bold rounded opacity-50 cursor-not-allowed">과제제출</button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="w-36 h-56 mr-3 mt-1">
-                                        <div className="pt-1 h-24 m-auto w-48 bg-stone-100 border-b-2 rounded">
-                                            <div className="w-full h-6 mt-2 mb-2 grid grid-cols-2 border-b-2">
-                                                <div>
-                                                    <p>중간고사</p>
-                                                </div>
-                                                <div>
-                                                    <p>2022.08.02</p>
-                                                </div>
+                                    <div className="pr-3 h-16 m-auto w-48 bg-stone-100 rounded grid grid-cols-3 mt-3">
+                                        <div className="w-12 h-full pt-5 mb-1 border-r-2 bg-green-100 text-green-800 font-semibold rounded-l">완료</div>
+                                        <div className="w-32">
+                                            <div className="h-5">
+                                                <p>2022.08.02 ~</p>
                                             </div>
-                                            <div className="w-32 grid grid-cols-2 ml-10">
+                                            <div className="grid grid-cols-2">
                                                 <div className="mt-2">
-                                                    <p className="pt-1 text-xs bg-red-100 text-red-800 font-semibold mr-2 px-2.5 py-1 rounded dark:bg-red-200 dark:text-red-900">미응시</p>
+                                                    <button className="mt-1 w-14 py-1 text-xs w-full bg-gray-500 hover:bg-gray-700 text-white font-bold rounded">자세히</button>
                                                 </div>
                                                 <div>
-                                                    <button className="mt-2 py-1 text-xs w-full bg-blue-500 hover:bg-blue-700 text-white font-bold rounded">세부사항</button>
+                                                    <button className="mt-3 text-xs w-full py-1 bg-blue-500 text-white font-bold rounded opacity-50 cursor-not-allowed">과제제출</button>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="pt-1 mt-3 h-24 m-auto w-48 bg-stone-100 border-b-2 rounded">
-                                            <div className="w-full h-6 mt-2 mb-2 grid grid-cols-2 border-b-2">
-                                                <div>
-                                                    <p>중간고사</p>
-                                                </div>
-                                                <div>
-                                                    <p>2022.08.02</p>
-                                                </div>
+                                    </div>
+                                    <div className="pr-3 h-16 m-auto w-48 bg-stone-100 rounded grid grid-cols-3 mt-3">
+                                        <div className="w-12 h-full pt-5 mb-1 border-r-2 bg-red-100 text-red-800 font-semibold rounded-l">미제출</div>
+                                        <div className="w-32">
+                                            <div className="h-5">
+                                                <p>2022.08.02 ~</p>
                                             </div>
-                                            <div className="w-32 grid grid-cols-2 ml-10">
+                                            <div className="grid grid-cols-2">
                                                 <div className="mt-2">
-                                                    <p className="pt-1 text-xs bg-green-100 text-green-800 font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-green-200 dark:text-green-900">응시</p>
+                                                    <button className="mt-1 w-14 py-1 text-xs w-full bg-gray-500 hover:bg-gray-700 text-white font-bold rounded">자세히</button>
                                                 </div>
                                                 <div>
-                                                    <button className="mt-2 py-1 text-xs w-full bg-blue-500 hover:bg-blue-700 text-white font-bold rounded">세부사항</button>
+                                                    <button className="mt-3 text-xs w-full py-1 bg-blue-500 text-white font-bold rounded opacity-50 cursor-not-allowed">과제제출</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -277,63 +279,79 @@ export default function ClassroomHome() {
                                 </div>
                             </div>
                         </div>
+                    </div>
                     {/*
                     **************************************************
                     ********************* 연장 ************************
                     **************************************************
                     */}
-                        <div className="w-80 h-96 m-auto">
-                            <div>
-                                <div className="mt-10 bg-gray-300 rounded-t pt-2 pb-2">
-                                    <p className="text-xl text-gray-50">과제</p>
-                                </div>
-                                <div className="rounded-b border-2 w-80 h-720 pt-3 grid grid-cols-3 drop-shadow-lg">
-                                    <div className="h-56 w-24 ml-6 mt-1 mb-3">
-                                        <div className="pt-6 h-24 w-14 text-stone-700 bg-stone-100 rounded">
-                                            <FontAwesomeIcon className="text-3xl " icon={faCalendarWeek} />
-                                            <p className="text-xs">진행 예정</p>
+                    <div className="w-80 h-96 m-auto">
+                        <div>
+                            <div className="mt-10 bg-blue-300 rounded-t pt-2 pb-2">
+                                <p className="text-xl text-gray-50">연장</p>
+                            </div>
+                            <div className="rounded-b border-2 w-80 h-720 pt-3 grid grid-cols-3 drop-shadow-lg">
+                                <div className="h-56 w-24 ml-6 mt-1 mb-3">
+                                    <div className="pt-3 h-16 w-14 text-stone-700 bg-stone-100 rounded">
+                                        <FontAwesomeIcon className="text-3xl " icon={faPenToSquare} />
+                                        <p className="text-xs">3주차</p>
+                                    </div>
+                                    <div className="pt-3 mt-3 h-16 text-stone-700 w-14 bg-stone-100 rounded">
+                                        <FontAwesomeIcon className="text-3xl" icon={faPenToSquare}/>
+                                        <p className="text-xs">3주차</p>
+                                    </div>
+                                    <div>
+                                        <div className="pt-3 mt-3 h-16 text-stone-700 w-14 bg-stone-100 rounded">
+                                            <FontAwesomeIcon className="text-3xl" icon={faPenToSquare}/>
+                                            <p className="text-xs">3주차</p>
                                         </div>
-                                        <div>
-                                            <div className="pt-6 mt-3 h-24 text-stone-700 w-14 bg-stone-100 rounded">
-                                                <FontAwesomeIcon className="text-3xl" icon={faCalendarCheck}/>
-                                                <p className="text-xs">완료</p>
+                                    </div>
+                                </div>
+                                <div className="w-36 h-56 mr-3 mt-1">
+                                    <div className="pr-3 h-16 m-auto w-48 bg-stone-100 rounded grid grid-cols-3">
+                                        <div className="w-12 h-full pt-5 mb-1 border-r-2 bg-red-100 text-red-800 font-semibold rounded-l">미제출</div>
+                                        <div className="w-32">
+                                            <div className="h-5">
+                                                <p>2022.08.02 ~</p>
+                                            </div>
+                                            <div className="grid grid-cols-2">
+                                                <div className="mt-2">
+                                                    <button className="mt-1 w-14 py-1 text-xs w-full bg-gray-500 hover:bg-gray-700 text-white font-bold rounded">자세히</button>
+                                                </div>
+                                                <div>
+                                                    <button className="mt-3 text-xs w-full py-1 text-white font-bold rounded bg-blue-500 hover:bg-blue-700">과제제출</button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="w-36 h-56 mr-3 mt-1">
-                                        <div className="pt-1 h-24 m-auto w-48 bg-stone-100 border-b-2 rounded">
-                                            <div className="w-full h-6 mt-2 mb-2 grid grid-cols-2 border-b-2">
-                                                <div>
-                                                    <p>중간고사</p>
-                                                </div>
-                                                <div>
-                                                    <p>2022.08.02</p>
-                                                </div>
+                                    <div className="pr-3 h-16 m-auto w-48 bg-stone-100 rounded grid grid-cols-3 mt-3">
+                                        <div className="w-12 h-full pt-5 mb-1 border-r-2 bg-red-100 text-red-800 font-semibold rounded-l">미제출</div>
+                                        <div className="w-32">
+                                            <div className="h-5">
+                                                <p>2022.08.02 ~</p>
                                             </div>
-                                            <div className="w-32 grid grid-cols-2 ml-10">
+                                            <div className="grid grid-cols-2">
                                                 <div className="mt-2">
-                                                    <p className="pt-1 text-xs bg-red-100 text-red-800 font-semibold mr-2 px-2.5 py-1 rounded dark:bg-red-200 dark:text-red-900">미응시</p>
+                                                    <button className="mt-1 w-14 py-1 text-xs w-full bg-gray-500 hover:bg-gray-700 text-white font-bold rounded">자세히</button>
                                                 </div>
                                                 <div>
-                                                    <button className="mt-2 py-1 text-xs w-full bg-blue-500 hover:bg-blue-700 text-white font-bold rounded">세부사항</button>
+                                                    <button className="mt-3 text-xs w-full py-1 text-white font-bold rounded bg-blue-500 hover:bg-blue-700">과제제출</button>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="pt-1 mt-3 h-24 m-auto w-48 bg-stone-100 border-b-2 rounded">
-                                            <div className="w-full h-6 mt-2 mb-2 grid grid-cols-2 border-b-2">
-                                                <div>
-                                                    <p>중간고사</p>
-                                                </div>
-                                                <div>
-                                                    <p>2022.08.02</p>
-                                                </div>
+                                    </div>
+                                    <div className="pr-3 h-16 m-auto w-48 bg-stone-100 rounded grid grid-cols-3 mt-3">
+                                        <div className="w-12 h-full pt-5 mb-1 border-r-2 bg-red-100 text-red-800 font-semibold rounded-l">미제출</div>
+                                        <div className="w-32">
+                                            <div className="h-5">
+                                                <p>2022.08.02 ~</p>
                                             </div>
-                                            <div className="w-32 grid grid-cols-2 ml-10">
+                                            <div className="grid grid-cols-2">
                                                 <div className="mt-2">
-                                                    <p className="pt-1 text-xs bg-green-100 text-green-800 font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-green-200 dark:text-green-900">응시</p>
+                                                    <button className="mt-1 w-14 py-1 text-xs w-full bg-gray-500 hover:bg-gray-700 text-white font-bold rounded">자세히</button>
                                                 </div>
                                                 <div>
-                                                    <button className="mt-2 py-1 text-xs w-full bg-blue-500 hover:bg-blue-700 text-white font-bold rounded">세부사항</button>
+                                                    <button className="mt-3 text-xs w-full py-1 text-white font-bold rounded bg-blue-500 hover:bg-blue-700">과제제출</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -341,6 +359,10 @@ export default function ClassroomHome() {
                                 </div>
                             </div>
                         </div>
+                    </div>
+
+
+
                     </div>
                 </div>
         </>

@@ -7,6 +7,8 @@ import Register from "./Component/Login/Register";
 import Classroom from "./Component/Student/Classroom";
 import ClassroomHome from "./Component/Student/ClassroomHome";
 import ClassroomTask from "./Component/Student/ClassroomTask";
+import ClassroomAttendance from "./Component/Student/ClassroomAttendance";
+
 import React from 'react';
 
 function App() {
@@ -19,6 +21,7 @@ function App() {
             <Route path="/students*" element={<Students />}></Route>
             <Route path="/classroom" element={<Classroom/>}></Route>
               <Route path="/classroom/home" element={<ClassroomHome/>}/>
+                <Route path="/classroom/home/attendance" element={<ClassroomAttendance/>}/>
                 <Route path="/classroom/home/task" element={<ClassroomTask/>}/>
 
 
