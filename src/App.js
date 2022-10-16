@@ -8,7 +8,8 @@ import Classroom from "./Component/Student/Classroom";
 import ClassroomHome from "./Component/Student/ClassroomHome";
 import ClassroomTask from "./Component/Student/ClassroomTask";
 import ClassroomAttendance from "./Component/Student/ClassroomAttendance";
-
+import ClassroomPro from "./Component/Professor/Classroom"
+import ClassroomHomePro from "./Component/Professor/ClassroomHome"
 import React from 'react';
 
 function App() {
@@ -16,13 +17,18 @@ function App() {
     <div className="App">
         <BrowserRouter>
           <Routes>
+            {/* Student URL임 */}
             <Route path="/" element={<Login/>}></Route>
             <Route path="/register" element={<Register/>}></Route>
-            <Route path="/students*" element={<Students />}></Route>
-            <Route path="/classroom" element={<Classroom/>}></Route>
-              <Route path="/classroom/home" element={<ClassroomHome/>}/>
-                <Route path="/classroom/home/attendance" element={<ClassroomAttendance/>}/>
-                <Route path="/classroom/home/task" element={<ClassroomTask/>}/>
+            <Route path="/student" element={<Students />}></Route>
+
+              <Route path="/student/classroom" element={<Classroom/>}></Route>
+              <Route path="/student/classroom/home" element={<ClassroomHome/>}/>
+                <Route path="/student/classroom/home/attendance" element={<ClassroomAttendance/>}/>
+                <Route path="/student/classroom/home/task" element={<ClassroomTask/>}/>
+
+            <Route path="/professor/classroom" element={<ClassroomPro/>}/>
+            <Route path="/professor/classroom/home" element={<ClassroomHomePro/>}/>
 
 
             {/* 상단에 위치하는 라우트들의 규칙을 모두 확인, 일치하는 라우트가 없는경우 처리 */}

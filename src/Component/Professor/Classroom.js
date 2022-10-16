@@ -41,7 +41,7 @@ export default function Classroom() {
                                 </div>
                             </div>
                             <div className="h-10 rounded-b-2xl bg-blue-300">
-                                <Link to="/students/classroom/home">
+                                <Link to="/professor/classroom/home">
                                     <p className="pt-2">들어가기</p>
                                 </Link>
                             </div>
