@@ -21,6 +21,22 @@ export default function VerticalNavBar() {
 
      */
 
+    const [menuData, setMenuData] = useState([false,false,false])
+
+    function selectMenu(index_menu){
+        switch (index_menu) {
+            case 1:
+                setMenuData(true, false, false)
+            case 2:
+                setMenuData(false, true, false)
+            case 3:
+                setMenuData(false, false, true)
+            default:
+                setMenuData(false, false, false)
+        }
+
+    }
+
     return(
         <>
             {/* 상단 메뉴 바*/}
@@ -43,25 +59,25 @@ export default function VerticalNavBar() {
                     </button>
                 </div>
                 <div className="w-full block lg:flex lg:items-center lg:w-auto mt-4">
-                    <div className="text-sm lg:flex-grow">
-                        <div className="mt-4">
+                    <div className="text-l lg:flex-grow">
+                        <button  className={"mt-4 mt-4 h-8 bg-blue-500 "}>
                             <a href="/professor/classroom/attendance"
                                className="block mt-4 lg:inline-block lg:mt-0 text-blue-200 hover:text-white mr-4">
                                 출석
                             </a>
-                        </div>
-                        <div className="mt-4">
+                        </button>
+                        <button  className={"mt-4 mt-4 h-8 bg-blue-500 " }>
                             <a href="/professor/classroom/task"
                                className="block mt-4 lg:inline-block lg:mt-0 text-blue-200 hover:text-white mr-4">
                                 과제
                             </a>
-                        </div>
-                        <div className="mt-4">
-                            <a href="/professor/classroom/task"
-                               className="block mt-4 lg:inline-block lg:mt-0 text-blue-200 hover:text-white mr-4">
+                        </button>
+                        <button  className={"mt-4 h-8 bg-blue-500 "}>
+                            <a href="/professor/classroom/exam"
+                               className=" block mt-4 lg:inline-block lg:mt-0 text-blue-200 hover:text-white mr-4 pt-1">
                                 시험
                             </a>
-                        </div>
+                        </button>
                     </div>
                 </div>
             </nav>

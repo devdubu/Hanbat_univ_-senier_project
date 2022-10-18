@@ -1,11 +1,18 @@
 import React from 'react';
 import profile from "../../public/profile.jpeg";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faCalendarCheck, faCalendarWeek, faChalkboard, faChalkboardTeacher} from "@fortawesome/free-solid-svg-icons";
+import {
+    faCalendarCheck,
+    faTrashCan,
+    faChalkboard,
+    faChalkboardTeacher,
+    faPlus
+} from "@fortawesome/free-solid-svg-icons";
 import {faAngleRight} from "@fortawesome/free-solid-svg-icons";
 import {faAngleLeft} from "@fortawesome/free-solid-svg-icons";
 import styles from './Classroom.module.css'
 import NavBar from "./NavBar";
+import VerticalNavBar from "./VerticalNavBar";
 
 
 
@@ -29,24 +36,48 @@ export default function ClassroomAttendance() {
      */
 
     return(
-        <div>
+        <div className={"flex "+styles.fullsize}>
+
+            <div>
+                <VerticalNavBar/>
+            </div>
 
             {/*출석 팝업 창*/}
-            <NavBar/>
 
-            {/*
-            **************************************************
-            ********************* 출석 ************************
-            **************************************************
-            */}
+
             <div className={styles.classroom}>
-                <div className="grid grid-cols-3">
+                {/*
+                **************************************************
+                ******************** 가로 메뉴바 ********************
+                **************************************************
+                */}
+                <div className="w-full h-14 bg-blue-300 flex">
+                    {/* 수업 명 */}
+                    <div className="mt-3">
+                        <p className="text-xl text-white font-semibold"> 해당 수업은 이것이다.</p>
+                    </div>
+                    <div className="grow"></div>
+                    {/* 요소 추가하기 */}
+                    <button className="bg-blue-500 w-8 h-8 mr-3 mt-3 rounded hover:bg-blue-700">
+                        <FontAwesomeIcon className="text-white" icon={faPlus}/>
+                    </button>
+                </div>
+
+                {/*
+                **************************************************
+                ********************* 출석 ************************
+                **************************************************
+                */}
+                <div className="grid grid-cols-3 ml-3">
                     <div className="w-80 h-96 drop-shadow-lg">
                         <div>
-                            <div className="mt-10 bg-gray-300 rounded-t pt-2 pb-2">
-                                <div>
-                                    <p className="text-xl text-gray-50">1 주차</p>
+                            <div className="mt-10 bg-gray-300 rounded-t pt-2 pb-2 flex">
+                                <div className="w-72">
+                                    <p className="text-xl text-gray-50 ml-12">1 주차</p>
                                 </div>
+                                <button className="w-8 h-8 mr-3 rounded text-white bg-red-400 hover:bg-red-600">
+                                    <FontAwesomeIcon icon={faTrashCan}/>
+                                </button>
                             </div>
 
                             <div className="rounded-b border-2 w-80 h-72 pt-3 pt-3 grid grid-cols-2  bg-white">
