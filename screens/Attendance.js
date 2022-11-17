@@ -57,7 +57,7 @@ function Attendance({navigation}) {
                 <Text style={styles.subContent2Text}>전자 출석</Text>
             </View>
             <View style={styles.subContent3}>
-                <Button title="출석 신청" onPress={() => navigation.navigate('QR')}/>
+                <Button title="출석 신청" onPress={() => navigation.navigate('Auth')}/>
             </View>
           </View> 
         </View>

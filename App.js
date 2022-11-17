@@ -10,6 +10,7 @@ import Attendance from "./screens/Attendance";
 import Exam from "./screens/Exam";
 import Task from "./screens/Task";
 
+import Auth from "./screens/Authenticate"
 import QRCodeScanner from "./screens/QRCodeScanner";
 
 const Stack = createStackNavigator();
@@ -23,6 +24,7 @@ export default function App() {
         <Stack.Screen name="시험" component={Exam} />
         <Stack.Screen name="과제" component={Task} />
 
+        <Stack.Screen name='Auth' component={Auth} />
         <Stack.Screen name="QR" component={QRCodeScanner} />
 
         <Stack.Screen name="Main" component={Main} />
