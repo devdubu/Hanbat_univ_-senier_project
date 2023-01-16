@@ -46,4 +46,7 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+//codeapp 테스트 중입니다.
+// 렉이 좀 심한가s
+
 module.exports = app;
